@@ -1,0 +1,43 @@
+Public Class DemoShop(){
+
+public void scenario1(){   
+    FileInputStream file = new FileInputStream(""C:\Users\varsha.anil.dhotre\Documents\test_data.xlsx"");
+    XSSFWorkbook workbook = new XSSFWorkbook(file);
+    XSSFSheet sheet = workbook.getSheetAt(0);
+    for(int row=0;row<5;row++){
+     driver.findElement(By.LinkText("register")).click();
+                Iterator<Cell> cellItr = row.cellIterator();               
+                while (cellItr.hasNext()) 
+                {
+                       Cell cell1 = cellItr.next();                  
+                       If(cell1.getStringCellValue()="Male"){driver.findelement(By.id("gender-male")).click();}
+                       else{driver.findelement(By.id("gender-female")).click();}
+                       Cell cell2 = cellItr.next();   
+                       driver.findelement(By.id("FirstName")).sendkeys(cell2);
+                       Cell cell3 = cellItr.next();
+                       driver.findelement(By.id("LastName")).sendkeys(cell3);
+                       Cell cell4 = cellItr.next();
+                       driver.findelement(By.id("Email")).sendkeys(cell4);
+                       Cell cell5 = cellItr.next();
+                       driver.findelement(By.id("Password")).sendkeys(cell5);
+                       Cell cell6 = cellItr.next();
+                       driver.findelement(By.id("ConfirmPassword")).sendkeys(cell6);
+                       driver.findelement(By.value("Continue")).click();
+                }
+            }
+    }
+public void scenario2(){
+
+}
+public void scenario3(){}
+
+  public static void main(String[] args){
+  System.setProperty("webdriver.chrome.driver", "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\chromedriver.exe"); 
+  WebDriver driver=new ChromeDriver(); 
+  driver.navigate().to("http://demowebshop.tricentis.com/"); 
+  scenario1();
+  scenario2();
+  scenario3();
+  
+  }
+}
